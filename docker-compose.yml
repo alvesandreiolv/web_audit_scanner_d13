@@ -1,0 +1,63 @@
+#This will be used to enrure all the systems you have online are safe.
+
+services:
+  web_audit_scanner_debian_w1s9:
+    container_name: web_audit_scanner_debian_w1s9
+    image: debian:13
+    volumes:
+      - ./volume_mounts/app/tools:/app/tools:ro
+      - ./volume_mounts/app/logs:/app/logs:rw
+    #this drops all container capabilities
+    cap_drop:
+      - ALL
+    #you can reallow stuff running the above
+    cap_add:
+    #  - AUDIT_WRITE
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+    #  - FSETID
+    #  - KILL
+    #  - MKNOD
+    #  - NET_BIND_SERVICE
+      - NET_RAW
+    #  - SETFCAP
+      - SETGID
+    #  - SETPCAP
+      - SETUID
+    #  - SYS_CHROOT
+    environment:
+      - TARGET_URL=${TARGET_URL:-}
+      - DEBIAN_FRONTEND=noninteractive
+    command: >
+      sh -c '
+
+      echo "updating the system" &&
+      apt update -y &&
+      apt upgrade -y &&
+
+      echo "massive install of sec softwares" &&
+      apt install -y curl ;
+      apt install -y debsecan ;
+      apt install -y dirb ;
+      apt install -y dnsrecon ;
+      apt install -y dnsutils ;
+      apt install -y ffuf ;
+      apt install -y gitleaks ;
+      apt install -y hydra ;
+      apt install -y lynis ;
+      apt install -y masscan ;
+      apt install -y nikto ;
+      apt install -y nmap ;
+      apt install -y sqlmap ;
+      apt install -y sslscan ;
+      apt install -y testssl.sh ;
+      apt install -y wafw00f ;
+      apt install -y wapiti ;
+      apt install -y whatweb ;
+      apt install -y whois ;
+      apt install -y wpscan ;
+
+      echo "keeps the container running" &&
+      sleep infinity
+      '

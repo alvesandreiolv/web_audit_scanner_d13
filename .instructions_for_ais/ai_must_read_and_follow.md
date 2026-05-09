@@ -1,0 +1,2 @@
+- Don't overengineer. Keep solutions simple.
+- Only do what the user explicitly asks. Do not take any action that was not requested.
