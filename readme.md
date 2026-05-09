@@ -32,6 +32,7 @@ docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yours
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com wafw00f  # detect WAF
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com headers  # HTTP response headers
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com testssl  # SSL/TLS vulnerability check
+docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com crawl   # spider/crawl all linked pages
 ```
 
 ## What each tool does
@@ -47,6 +48,7 @@ docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yours
 | `wafw00f` | Detects if a Web Application Firewall is in front |
 | `headers` | Raw HTTP response headers (server, cookies, security policies) |
 | `testssl` | SSL/TLS vulnerabilities (Heartbleed, POODLE, etc.) |
+| `crawl` | Follows links to discover all pages on the site |
 
 ## Logs
 

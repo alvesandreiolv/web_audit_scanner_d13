@@ -28,6 +28,7 @@ run_dirb()  { dirb "$TARGET" /usr/share/dirb/wordlists/common.txt -o "$INDIR/dir
 run_wafw00f() { wafw00f "$TARGET" > "$INDIR/wafw00f.txt" 2>&1; }
 run_curl()  { curl -sI "$TARGET" > "$INDIR/headers.txt" 2>&1; }
 run_testssl() { testssl --quiet "$TARGET" > "$INDIR/testssl.txt" 2>&1; }
+run_crawl() { wget --spider -r -l 3 -nd "$TARGET" > "$INDIR/crawl.txt" 2>&1; }
 
 run_all() {
     echo "$EXCLUDE" | grep -qv "whois"  && { echo "[whois+dns]"  && run_whois || true && run_dig || true; }
@@ -36,6 +37,7 @@ run_all() {
     echo "$EXCLUDE" | grep -qv "sslscan" && { echo "[sslscan]"    && run_sslscan || true; }
     echo "$EXCLUDE" | grep -qv "dirb"   && { echo "[dirb]"       && run_dirb || true; }
     echo "$EXCLUDE" | grep -qv "wafw00f" && { echo "[wafw00f]"    && run_wafw00f || true; }
+    echo "$EXCLUDE" | grep -qv "crawl"  && { echo "[crawl]"       && run_crawl || true; }
     echo "$EXCLUDE" | grep -qv "headers" && { echo "[headers+ssl]" && run_curl || true && run_testssl || true; }
 }
 
@@ -51,9 +53,10 @@ case "$TOOL" in
     dirb)   run_dirb ;;
     wafw00f) run_wafw00f ;;
     headers) run_curl ;;
+    crawl)  run_crawl ;;
     testssl) run_testssl ;;
     all)    run_all ;;
-    *)      echo "Unknown tool: $TOOL"; echo "Available: whois dig nmap whatweb sslscan dirb wafw00f headers testssl all"; exit 1 ;;
+    *)      echo "Unknown tool: $TOOL"; echo "Available: whois dig nmap whatweb sslscan dirb wafw00f headers testssl crawl all"; exit 1 ;;
 esac
 
 COMBINED="$OUTDIR/combined_log.txt"

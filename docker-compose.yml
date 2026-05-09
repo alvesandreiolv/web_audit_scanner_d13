@@ -56,6 +56,7 @@ services:
       apt install -y wapiti ;
       apt install -y whatweb ;
       apt install -y whois ;
+      apt install -y wget ;
       apt install -y wpscan ;
 
       echo "keeps the container running" &&
