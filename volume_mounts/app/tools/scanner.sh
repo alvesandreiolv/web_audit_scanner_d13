@@ -13,11 +13,15 @@ OUTDIR="/app/logs/${HOST}_${TIMESTAMP}"
 INDIR="$OUTDIR/individual_logs"
 mkdir -p "$INDIR"
 
-TOOL="${2:-all}"
+TOOL="all"
 EXCLUDE=""
-case "$TOOL" in
-    -* ) EXCLUDE="$TOOL"; TOOL="all" ;;
-esac
+for arg in "$@"; do
+    case "$arg" in
+        -* ) EXCLUDE="$EXCLUDE$arg" ;;
+        https://*|http://* ) : ;;
+        * ) TOOL="$arg" ;;
+    esac
+done
 
 run_whois() { whois "$HOST" > "$INDIR/whois.txt" 2>&1; }
 run_dig()   { dig ANY "$HOST" > "$INDIR/dns.txt" 2>&1; }
