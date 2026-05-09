@@ -22,6 +22,7 @@ docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yours
 
 ```bash
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com all      # run everything (default)
+docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -nmap    # run everything except nmap
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com whois    # domain registration info
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com dig      # DNS records
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com nmap     # port scan + service versions

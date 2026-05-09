@@ -14,6 +14,10 @@ INDIR="$OUTDIR/individual_logs"
 mkdir -p "$INDIR"
 
 TOOL="${2:-all}"
+EXCLUDE=""
+case "$TOOL" in
+    -* ) EXCLUDE="$TOOL"; TOOL="all" ;;
+esac
 
 run_whois() { whois "$HOST" > "$INDIR/whois.txt" 2>&1; }
 run_dig()   { dig ANY "$HOST" > "$INDIR/dns.txt" 2>&1; }
@@ -26,13 +30,13 @@ run_curl()  { curl -sI "$TARGET" > "$INDIR/headers.txt" 2>&1; }
 run_testssl() { testssl --quiet "$TARGET" > "$INDIR/testssl.txt" 2>&1; }
 
 run_all() {
-    echo "[whois+dns]"  && run_whois || true && run_dig || true
-    echo "[nmap]"       && run_nmap || true
-    echo "[whatweb]"    && run_whatweb || true
-    echo "[sslscan]"    && run_sslscan || true
-    echo "[dirb]"       && run_dirb || true
-    echo "[wafw00f]"    && run_wafw00f || true
-    echo "[headers+ssl]" && run_curl || true && run_testssl || true
+    echo "$EXCLUDE" | grep -qv "whois"  && { echo "[whois+dns]"  && run_whois || true && run_dig || true; }
+    echo "$EXCLUDE" | grep -qv "nmap"   && { echo "[nmap]"       && run_nmap || true; }
+    echo "$EXCLUDE" | grep -qv "whatweb" && { echo "[whatweb]"    && run_whatweb || true; }
+    echo "$EXCLUDE" | grep -qv "sslscan" && { echo "[sslscan]"    && run_sslscan || true; }
+    echo "$EXCLUDE" | grep -qv "dirb"   && { echo "[dirb]"       && run_dirb || true; }
+    echo "$EXCLUDE" | grep -qv "wafw00f" && { echo "[wafw00f]"    && run_wafw00f || true; }
+    echo "$EXCLUDE" | grep -qv "headers" && { echo "[headers+ssl]" && run_curl || true && run_testssl || true; }
 }
 
 echo "=== Scanning $TARGET ==="
