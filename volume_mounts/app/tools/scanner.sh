@@ -8,7 +8,7 @@ fi
 
 # Strip protocol for hostname-based tools
 HOST=$(echo "$TARGET" | sed -E 's|^https?://||' | cut -d/ -f1)
-TZ=America/Sao_Paulo TIMESTAMP=$(date +%H%M%S_%d%m%y)
+TIMESTAMP=$(TZ='<-03>3' date +%H%M%S_%d%m%y)
 OUTDIR="/app/logs/${HOST}_${TIMESTAMP}"
 INDIR="$OUTDIR/individual_logs"
 mkdir -p "$INDIR"
