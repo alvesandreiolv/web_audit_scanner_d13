@@ -1,4 +1,6 @@
-#This will be used to enrure all the systems you have online are safe.
+# Web Audit Scanner — Debian container packed with security tools to audit websites you own.
+# The container installs the tools at startup and stays alive so you can run scans via
+# the scanner.sh script mounted at /app/tools/scanner.sh (see readme.md for usage).
 
 services:
   web_audit_scanner_debian_w1s9:
@@ -7,25 +9,27 @@ services:
     volumes:
       - ./volume_mounts/app/tools:/app/tools:ro
       - ./volume_mounts/app/logs:/app/logs:rw
-    #this drops all container capabilities
+    #this bellow drops ALL container capabilities
     cap_drop:
       - ALL
-    #you can reallow stuff running the above
+    #this bellow reallows the minimum of the container capabilities
     cap_add:
-    #  - AUDIT_WRITE
       - CHOWN
       - DAC_OVERRIDE
       - FOWNER
+      - NET_RAW
+      - SETGID
+      - SETUID
+    #allowing the bellow will add unecessary permissions to the container
+    #you may reallow only if necessary
+    #  - SETFCAP
+    #  - SETPCAP
+    #  - SYS_CHROOT
+    #  - AUDIT_WRITE
     #  - FSETID
     #  - KILL
     #  - MKNOD
     #  - NET_BIND_SERVICE
-      - NET_RAW
-    #  - SETFCAP
-      - SETGID
-    #  - SETPCAP
-      - SETUID
-    #  - SYS_CHROOT
     environment:
       - TARGET_URL=${TARGET_URL:-}
       - DEBIAN_FRONTEND=noninteractive
