@@ -20,7 +20,7 @@ docker compose up -d
 
 The first run takes a few minutes to install everything. Check progress with `docker logs -f web_audit_scanner_d13`.
 
-## Usage
+## How to use
 
 ```bash
 # Full scan
@@ -29,6 +29,8 @@ docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com
 # Single tool
 docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com <tool>
 ```
+
+When the scan finishes, timestamped logs are available in `volume_mounts/app/logs/`.
 
 ## Available tools
 
