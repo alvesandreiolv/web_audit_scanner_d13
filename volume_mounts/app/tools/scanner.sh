@@ -24,8 +24,8 @@ fi
 # Strip protocol to get a bare hostname (some tools need host, others need URL).
 HOST=$(echo "$TARGET" | sed -E 's|^https?://||' | cut -d/ -f1)
 
-# Timestamp in Brazil timezone, used to name the log directory.
-TIMESTAMP=$(TZ='<-03>3' date +%H%M%S_%d%m%y)
+# Timestamp in UTC, used to name the log directory.
+TIMESTAMP=$(TZ='UTC' date +%H%M%S_%d%m%y)
 
 # --- Output directories ------------------------------------------------------
 OUTDIR="/app/logs/${HOST}_${TIMESTAMP}"
