@@ -18,6 +18,8 @@ This tool is meant to be run on a server or inside a controlled Docker environme
 docker compose up -d
 ```
 
+The first run takes a few minutes to install everything. Check progress with `docker logs -f web_audit_scanner_d13`.
+
 ## Usage
 
 ```bash
