@@ -43,6 +43,21 @@ docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yours
 docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com crawl   # spider/crawl all linked pages
 ```
 
+## Skipping tools
+
+Prefix a tool name with `-` to exclude it from a full scan. Useful for slow or noisy tools you don't always need:
+
+```bash
+# Skip dirb — wordlist brute-force can take hours on large sites
+docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -dirb
+
+# Skip nmap — a full port scan can lock you out of your own server
+docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -nmap
+
+# Skip both for a quick scan that finishes in minutes
+docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -dirb -nmap
+```
+
 ## What each tool does
 
 | Tool | What it checks |
