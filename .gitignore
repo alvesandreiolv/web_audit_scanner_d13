@@ -1,0 +1,14 @@
+# Log files
+*.log
+logs/
+volume_mounts/app/logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+
+# Docker
+docker-compose.override.yml
