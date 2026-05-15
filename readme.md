@@ -52,6 +52,23 @@ docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yours
 
 ## Logs
 
-Results in `volume_mounts/app/logs/<host>_<timestamp>/`:
-- `individual_logs/` — per-tool output
-- `combined_log.txt` — all results in one file
+Each scan creates a timestamped log directory under `volume_mounts/app/logs/`. Logs are git-ignored — they stay local and are never pushed to the repo.
+
+```
+volume_mounts/
+└── app/
+    └── logs/
+        └── <host>_<HHMMSS>_<DDMMYY>/
+            ├── combined_log.txt          # all results concatenated into one file
+            └── individual_logs/
+                ├── crawl.txt             # crawled page URLs and responses
+                ├── dirb.txt              # directory brute-force results
+                ├── dns.txt               # DNS records (A, MX, TXT, NS, etc.)
+                ├── headers.txt           # HTTP response headers
+                ├── nmap.txt              # port scan and service versions
+                ├── sslscan.txt           # SSL/TLS cipher and certificate analysis
+                ├── testssl.txt           # SSL/TLS vulnerability check
+                ├── wafw00f.txt           # WAF detection results
+                ├── whatweb.txt           # tech stack fingerprinting
+                └── whois.txt             # domain registration info
+```
