@@ -24,27 +24,27 @@ The first run takes a few minutes to install everything. Check progress with `do
 
 ```bash
 # Full scan
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com
 
 # Single tool
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com <tool>
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com <tool>
 ```
 
 ## Available tools
 
 ```bash
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com all      # run everything (default)
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -nmap    # run everything except nmap
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com whois    # domain registration info
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com dig      # DNS records
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com nmap     # port scan + service versions
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com whatweb  # identify tech stack
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com sslscan  # SSL/TLS analysis
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com dirb     # directory enumeration
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com wafw00f  # detect WAF
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com headers  # HTTP response headers
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com testssl  # SSL/TLS vulnerability check
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com crawl   # spider/crawl all linked pages
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com all      # run everything (default)
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com -nmap    # run everything except nmap
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com whois    # domain registration info
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com dig      # DNS records
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com nmap     # port scan + service versions
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com whatweb  # identify tech stack
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com sslscan  # SSL/TLS analysis
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com dirb     # directory enumeration
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com wafw00f  # detect WAF
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com headers  # HTTP response headers
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com testssl  # SSL/TLS vulnerability check
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com crawl   # spider/crawl all linked pages
 ```
 
 ## Skipping tools
@@ -53,13 +53,13 @@ Prefix a tool name with `-` to exclude it from a full scan. Useful for slow or n
 
 ```bash
 # Skip dirb — wordlist brute-force can take hours on large sites
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -dirb
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com -dirb
 
 # Skip nmap — a full port scan can lock you out of your own server
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -nmap
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com -nmap
 
 # Skip both for a quick scan that finishes in minutes
-docker exec web_audit_scanner_debian_w1s9 sh /app/tools/scanner.sh https://yoursite.com -dirb -nmap
+docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com -dirb -nmap
 ```
 
 ## What each tool does
