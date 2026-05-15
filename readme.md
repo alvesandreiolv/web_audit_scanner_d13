@@ -30,7 +30,7 @@ docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com
 docker exec web_audit_scanner_d13 sh /app/tools/scanner.sh https://yoursite.com <tool>
 ```
 
-When the scan finishes, timestamped logs are available in `volume_mounts/app/logs/`.
+📔 When the scan finishes, timestamped logs are available in `volume_mounts/app/logs/`.
 
 ## Available tools
 
