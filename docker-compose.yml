@@ -3,8 +3,8 @@
 # the scanner.sh script mounted at /app/tools/scanner.sh (see readme.md for usage).
 
 services:
-  web_audit_scanner_debian_w1s9:
-    container_name: web_audit_scanner_debian_w1s9
+  web_audit_scanner_d13:
+    container_name: web_audit_scanner_d13
     image: debian:13
     volumes:
       - ./volume_mounts/app/tools:/app/tools:ro

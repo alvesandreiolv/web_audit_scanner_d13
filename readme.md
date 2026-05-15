@@ -2,13 +2,13 @@
 
 Debian container packed with security tools to scan websites you own.
 
-> **Is this safe?** Yes — and you can verify it yourself in under a minute. The only two things that execute code on your machine are [`docker-compose.yml`](docker-compose.yml) and [`volume_mounts/app/tools/scanner.sh`](volume_mounts/app/tools/scanner.sh). Both are dead simple, short, and human-readable. Glance over them before you run anything — if those two files look fine, the rest is just static data.
+> **Like this?** Hit me up on [LinkedIn](https://www.linkedin.com/in/alvesandreiolv/). Suggestions and collaborators welcome.
+
+> **Is this safe?** Yes — and you can verify it yourself in under a minute. The only two files that execute code on your machine are [`docker-compose.yml`](docker-compose.yml) and [`volume_mounts/app/tools/scanner.sh`](volume_mounts/app/tools/scanner.sh). Also worth a glance: [`.instructions_for_ais/`](.instructions_for_ais/), which tells AIs how to behave in this repo. All three are dead simple, short, and human-readable. Glance over them before you run anything — if they look fine, the rest is just static data.
 
 ---
 
 This tool is meant to be run on a server or inside a controlled Docker environment. It does **not** use a VPN or proxy — any site you scan will see your own IP address, leaving a trace of who you are. The goal is to audit your own systems and verify that what you have online is safe.
-
-If you like what you see, have suggestions, or want to collaborate — hit me up on [LinkedIn](https://www.linkedin.com/in/alvesandreiolv/). Contributors welcome.
 
 ## Setup
 
