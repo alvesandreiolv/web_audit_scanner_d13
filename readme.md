@@ -8,7 +8,7 @@ Debian container packed with security tools to scan websites you own.
 
 ---
 
-This tool is meant to be run on a server or inside a controlled Docker environment. It does **not** use a VPN or proxy — any site you scan will see your own IP address, leaving a trace of who you are. The goal is to audit your own systems and verify that what you have online is safe.
+This tool is meant to be run on a server or inside a controlled Docker environment. It does **not** use a VPN or proxy — any site you scan will see your own IP address (you may avid this if you run from a remote server), leaving a trace of who you are. The goal is to audit your own systems and verify that what you have online is safe.
 
 > ⚠️ Scanning websites you don't own is illegal. I don't condone or take responsibility for misuse.
 
