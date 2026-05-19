@@ -1,3 +1,0 @@
-- Don't overengineer. Keep solutions simple.
-- Only do what the user explicitly asks. Do not take any action that was not requested.
-- When the user says "git commit and push" (or similar), run exactly `git add . && git commit -m "<short sentence describing what was done>" && git push`. Nothing else. No git status, no git diff, no git log, no extra inspection commands — just that one combined command.
