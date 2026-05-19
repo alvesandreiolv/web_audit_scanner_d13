@@ -4,7 +4,7 @@ Debian container packed with security tools to scan websites you own.
 
 > ❤️ **Like this?** Hit me up on [LinkedIn](https://www.linkedin.com/in/alvesandreiolv/). Suggestions and collaborators welcome.
 
-> **Is this safe?** Yes — and you can verify it yourself in under a minute. The only two files that execute code on your machine are [`docker-compose.yml`](docker-compose.yml) and [`volume_mounts/app/tools/scanner.sh`](volume_mounts/app/tools/scanner.sh). Also worth a glance: [`.instructions_for_ais/`](.instructions_for_ais/), which tells AIs how to behave in this repo. All three are dead simple, short, and human-readable. Glance over them before you run anything — if they look fine, the rest is just static data.
+> **Is this safe?** Yes — and you can verify it yourself in under a minute. The only two files that execute code on your machine are [`docker-compose.yml`](docker-compose.yml) and [`volume_mounts/app/tools/scanner.sh`](volume_mounts/app/tools/scanner.sh). Both are dead simple, short, and human-readable. Glance over them before you run anything — if they look fine, the rest is just static data.
 
 ---
 
