@@ -5,7 +5,7 @@
 services:
   web_audit_scanner_d13:
     container_name: web_audit_scanner_d13
-    image: debian:13
+    image: debian:13-slim
     volumes:
       - ./volume_mounts/app/tools:/app/tools:ro
       - ./volume_mounts/app/logs:/app/logs:rw
